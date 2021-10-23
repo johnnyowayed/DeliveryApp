@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yYD-6d-eTg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Menu Scene View Controller-->
+        <scene sceneID="hTu-LE-8JX">
+            <objects>
+                <viewController storyboardIdentifier="MenuSceneViewController" id="yYD-6d-eTg" customClass="MenuSceneViewController" customModule="DeliveryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UCk-9o-Ten">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="noK-7f-FOp">
+                                <rect key="frame" x="0.0" y="126" width="414" height="770"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3IS-nM-K1M">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="rzR-4L-1tn">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2LN-Va-I8I">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nVV-wp-yXO">
+                                <rect key="frame" x="20" y="60" width="374" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gVJ-YJ-yZy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="noK-7f-FOp" firstAttribute="top" secondItem="nVV-wp-yXO" secondAttribute="bottom" constant="16" id="ED5-M2-bWO"/>
+                            <constraint firstItem="noK-7f-FOp" firstAttribute="top" secondItem="UCk-9o-Ten" secondAttribute="top" constant="126" id="Jja-Mv-g6Q"/>
+                            <constraint firstAttribute="bottom" secondItem="noK-7f-FOp" secondAttribute="bottom" id="TEk-mN-Ufg"/>
+                            <constraint firstItem="nVV-wp-yXO" firstAttribute="centerX" secondItem="UCk-9o-Ten" secondAttribute="centerX" id="aLg-hQ-bWa"/>
+                            <constraint firstItem="nVV-wp-yXO" firstAttribute="top" secondItem="gVJ-YJ-yZy" secondAttribute="top" constant="16" id="gcG-VA-NTl"/>
+                            <constraint firstItem="noK-7f-FOp" firstAttribute="leading" secondItem="gVJ-YJ-yZy" secondAttribute="leading" id="ihK-gO-zkX"/>
+                            <constraint firstItem="nVV-wp-yXO" firstAttribute="leading" secondItem="gVJ-YJ-yZy" secondAttribute="leading" constant="20" id="nJn-0n-llp"/>
+                            <constraint firstItem="noK-7f-FOp" firstAttribute="trailing" secondItem="gVJ-YJ-yZy" secondAttribute="trailing" id="sVo-hp-KyX"/>
+                            <constraint firstItem="gVJ-YJ-yZy" firstAttribute="trailing" secondItem="nVV-wp-yXO" secondAttribute="trailing" constant="20" id="yuS-31-WBR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Okz-fw-FKs"/>
+                    <connections>
+                        <outlet property="collectionView" destination="noK-7f-FOp" id="JHf-FM-g4I"/>
+                        <outlet property="segmentControl" destination="nVV-wp-yXO" id="Rjs-ho-nsn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vtQ-Ty-mS6" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="326" y="129"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
