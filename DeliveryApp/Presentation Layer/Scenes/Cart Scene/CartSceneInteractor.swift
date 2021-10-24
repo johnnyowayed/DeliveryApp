@@ -11,7 +11,6 @@ protocol CartSceneInteractor {}
 
 final class CartSceneInteractorImplementation {
     var presenter: CartScenePresenter?
-    var worker: CartSceneWorker?
 }
 
 extension CartSceneInteractorImplementation: CartSceneInteractor {

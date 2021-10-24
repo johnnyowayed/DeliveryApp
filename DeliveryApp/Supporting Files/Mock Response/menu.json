@@ -5,22 +5,26 @@
         {"name" : "Vegitarian",
             "imageUrl": "https://i0.wp.com/munchyesta.com/wp-content/uploads/2020/07/vegetarian-pizza.jpg?resize=750%2C500&ssl=1",
             "description":"Sun dried tomatoes, olives, fresh mushrrom, corn",
-            "price": "15 usd"
+            "price": 15,
+            "currency": "usd"
         },
         {"name" : "Pepperoni",
             "imageUrl": "https://www.simplyrecipes.com/thmb/xNW4Me0OLyjPiHQ9vGPaAYvs9dA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__09__easy-pepperoni-pizza-lead-4-82c60893fcad4ade906a8a9f59b8da9d.jpg",
             "description":"Pepperoni, mozzarella cheese, pizza sauce",
-            "price": "12 usd"
+            "price": 10,
+            "currency": "usd"
         },
         {"name" : "Hawaiian",
             "imageUrl": "https://img.kidspot.com.au/52lezcwU/w643-h428-cfill-q90/kk/2015/03/hawaiian-pizza-recipe-605894-2.jpg",
             "description":"Pineapple, mozzarella cheese, pizza sauce",
-            "price": "11 usd"
+            "price": 11,
+            "currency": "usd"
         },
         {"name" : "Swiss Mushroom",
             "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2013%2F12%2F06%2F200904-xl-mushroom-and-goat-cheese-bechamel-pizzas-2000.jpg",
             "description":"Swiss Cheese, Fresh Mushroom",
-            "price": "13 usd"
+            "price": 13,
+            "currency": "usd"
         }
     ]
 },
@@ -30,22 +34,26 @@
             {"name" : "Atlantic",
                 "imageUrl": "https://usakor.com/jays108/wp-content/uploads/sites/184/2020/07/atlantic-e1594885387997.jpg",
                 "description":"Baked salmon, spicy aioli, cucumber, tempura, eel sauce",
-                "price": "13 usd"
+                "price": 21,
+                "currency": "usd"
             },
             {"name" : "Fiery Shrimp",
                 "imageUrl": "https://kimchimom.com/wp-content/uploads/2014/01/01-kimchimom-028.jpg",
                 "description":"Shrimp tempura, spicy motoyaki sauce, cucumber",
-                "price": "21 usd"
+                "price": 13,
+                "currency": "usd"
             },
             {"name" : "Spicy Crab",
                 "imageUrl": "https://izzycooking.com/wp-content/uploads/2020/12/Spicy-Crab-Roll-1.jpg",
                 "description":"Spicy crab, tempura shrimp, cucmber, spicy mayo, avocado, eel sauce",
-                "price": "23 usd"
+                "price": 23,
+                "currency": "usd"
             },
             {"name" : "Wave Roll",
                 "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/11/dd/6b/7f/mount-dora-roll.jpg",
                 "description":"Spicy tuna, shrimp tempura, avocado, cucumber, soy paper",
-                "price": "30 usd"
+                "price": 31,
+                "currency": "usd"
             }
         ]
     },
@@ -55,12 +63,14 @@
             {"name" : "Pepsi",
                 "imageUrl": "https://scontent.fbey5-1.fna.fbcdn.net/v/t1.18169-9/12743635_1114650131901772_900312789858567336_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=973b4a&_nc_ohc=-_MPtTJ9RNwAX-2pad1&_nc_ht=scontent.fbey5-1.fna&oh=175199bb4b90c622f5bf2d1c259e9e69&oe=619AED99",
                 "description":"",
-                "price": "2 usd"
+                "price": 2,
+                "currency": "usd"
             },
             {"name" : "7up",
                 "imageUrl": "https://scontent.fbey5-2.fna.fbcdn.net/v/t31.18172-8/10847358_1021410281206010_3125102879111040529_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=973b4a&_nc_ohc=DY_YNNjQ5Z8AX8TqWIy&_nc_oc=AQkWBIaRnqR7zxix3fOy6syf_Hb3x-Ykd1D_lXcjWeGYNXGxPuYzKgCevIOr3AuW334&_nc_ht=scontent.fbey5-2.fna&oh=70adf79f1eef9bc612ae60987ad56a9f&oe=619B4F19",
                 "description":"",
-                "price": "2 usd"
+                "price": 2,
+                "currency": "usd"
             }
         ]
     }]

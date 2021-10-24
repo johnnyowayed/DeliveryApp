@@ -15,7 +15,6 @@ protocol CartSceneViewControllerOutput {}
 
 final class CartSceneViewController: UIViewController {
     var interactor: CartSceneInteractor?
-    var router: CartSceneRouter?
     
     var itemsInCart = [Item]()
     
@@ -58,7 +57,7 @@ extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
                 cell1.selectionStyle = .none
                 let itemInCart = self.itemsInCart[indexPath.row]
                 cell1.itemName_Label.text = itemInCart.name
-                cell1.itemPrice_Label.text = itemInCart.price
+                cell1.itemPrice_Label.text = "\(itemInCart.price)" + " " + itemInCart.currency
                 cell1.itemImage_ImageView.sd_setImage(with: URL(string: itemInCart.imageUrl), placeholderImage: UIImage(named: "placeholder.png"))
                 cell1.cancelItem_Button.tag = indexPath.row
                 cell1.cancelItem_Button.addTarget(self, action: #selector(cancelItem), for: .touchUpInside)
@@ -68,7 +67,11 @@ extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
                 cell2.selectionStyle = .none
                 cell2.delivery_Label.text = "Delivery is free"
                 cell2.value_Label.text = "Value:"
-                cell2.totalPrice_Label.text = "200 usd"
+                var totalPrice = 0
+                for item in itemsInCart {
+                    totalPrice += item.price
+                }
+                cell2.totalPrice_Label.text = "\(totalPrice)" + " " + "usd"
                 return cell2
             }
         }
@@ -94,13 +97,8 @@ extension CartSceneViewController {
         let viewController = self
         let interactor = CartSceneInteractorImplementation()
         let presenter = CartScenePresenterImplementation()
-        let router = CartSceneRouterImplementation()
-        let worker = CartSceneWorkerImplementation()
         viewController.interactor = interactor
-        viewController.router = router
         interactor.presenter = presenter
-        interactor.worker = worker
         presenter.viewController = viewController
-        router.navigationController = viewController.navigationController
     }
 }

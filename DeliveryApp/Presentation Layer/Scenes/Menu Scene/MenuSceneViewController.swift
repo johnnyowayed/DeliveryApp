@@ -148,7 +148,7 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
         cell.desciption_Label.text = menuItem.description
         let imageUrl = URL.init(string: menuItem.imageUrl)
         cell.itemImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
-        cell.button.setTitle(menuItem.price, for: .normal)
+        cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
         cell.button.addAction {
             if cell.button.backgroundColor == .black {
                 let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
@@ -159,7 +159,7 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
                 let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
                 self.interactor?.didRemoveItemFromCartAt(oldItems: self.itemsInCart, index: index)
                 cell.button.backgroundColor = .black
-                cell.button.setTitle(menuItem.price, for: .normal)
+                cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
             }
             print("Items in cart: \(self.itemsInCart)")
         }

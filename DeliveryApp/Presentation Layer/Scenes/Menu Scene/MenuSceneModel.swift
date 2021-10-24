@@ -21,5 +21,6 @@ struct Item: Decodable, Equatable {
     let name:String
     let imageUrl: String
     let description:String
-    let price:String
+    let price:Int
+    let currency:String
 }
