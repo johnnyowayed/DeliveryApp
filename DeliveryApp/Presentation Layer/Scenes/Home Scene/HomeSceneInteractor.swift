@@ -18,16 +18,13 @@ final class HomeSceneInteractorImplementation {
 
 extension HomeSceneInteractorImplementation: HomeSceneInteractor {
     func viewDidLoad() {
-        if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try! JSONDecoder().decode(HomeSceneModel.self, from: data)
-                self.presenter?.interactor(didRetreiveOffers: jsonResult)
-                
-            } catch {
+        let _ = worker?.fetchImages(completion: { response in
+            switch response {
+            case .success(let homeSceneModel):
+                self.presenter?.interactor(didRetreiveOffers: homeSceneModel)
+            case .failure(_):
+                print("Failed to fetch data")
             }
-        }
+        })
     }
-    
-    
 }

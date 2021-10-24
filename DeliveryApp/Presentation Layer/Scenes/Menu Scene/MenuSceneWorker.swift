@@ -9,13 +9,32 @@
 import Foundation
 
 protocol MenuSceneWorker {
-    
+    func fetchMenu(completion: @escaping MenuResponse) -> URLSessionDataTask?
 }
 
-final class MenuSceneWorkerImplementation {
-    var presenter: MenuScenePresenter?
-}
+typealias MenuResponse = (Result<MenuSceneModel, Error>) -> Void
+
+final class MenuSceneWorkerImplementation {}
 
 extension MenuSceneWorkerImplementation: MenuSceneWorker {
-    
+    func fetchMenu(completion: @escaping MenuResponse) -> URLSessionDataTask? {
+        return nil
+    }
 }
+
+final class MockMenuSceneWorkerImplementation: MenuSceneWorker {
+    func fetchMenu(completion: @escaping MenuResponse) -> URLSessionDataTask? {
+        if let path = Bundle.main.path(forResource: "menu", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try! JSONDecoder().decode(MenuSceneModel.self, from: data)
+                completion(.success(jsonResult))
+            } catch {
+            }
+        }
+        return nil
+    }
+}
+
+
+

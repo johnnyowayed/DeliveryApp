@@ -110,7 +110,7 @@ extension HomeSceneViewController {
         let interactor = HomeSceneInteractorImplementation()
         let presenter = HomeScenePresenterImplementation()
         let router = HomeSceneRouterImplementation()
-        let worker = HomeSceneWorkerImplementation()
+        let worker = MockHomeSceneWorkerImplementation()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter

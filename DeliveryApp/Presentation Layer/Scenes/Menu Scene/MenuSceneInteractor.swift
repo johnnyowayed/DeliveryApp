@@ -24,9 +24,9 @@ extension MenuSceneInteractorImplementation: MenuSceneInteractor {
         var items = oldItems
         let itemTobeRemove =  menuItems[index.section].items[index.row]
         
-//        if let index = items.firstIndex(of: itemTobeRemove) {
-//            items.remove(at: index)
-//        }
+        
+        items.removeAll { $0 == itemTobeRemove}
+
         self.presenter?.itemsInCart(items: items)
     }
     
@@ -38,15 +38,16 @@ extension MenuSceneInteractorImplementation: MenuSceneInteractor {
     }
     
     func viewDidLoad() {
-        if let path = Bundle.main.path(forResource: "menu", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try! JSONDecoder().decode(MenuSceneModel.self, from: data)
-                self.menuItems = jsonResult.menu
-                self.presenter?.interactor(didReceiveMenu: jsonResult)
-                
-            } catch {
+        
+        let _ = worker?.fetchMenu(completion: { response in
+            switch response {
+            case .success(let homeSceneModel):
+                self.menuItems = homeSceneModel.menu
+                self.presenter?.interactor(didReceiveMenu: homeSceneModel)
+            case .failure(_):
+                print("Failed to fetch data")
             }
-        }
+        })
     }
 }
+

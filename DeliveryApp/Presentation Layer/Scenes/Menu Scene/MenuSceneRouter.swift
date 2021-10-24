@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MenuSceneRouter {
-    
+    func goToCart(withItems items: [Item])
 }
 
 final class MenuSceneRouterImplementation: NSObject {
@@ -18,4 +18,10 @@ final class MenuSceneRouterImplementation: NSObject {
 
 extension MenuSceneRouterImplementation: MenuSceneRouter {
     
+    func goToCart(withItems items: [Item]) {
+        let storyboard = UIStoryboard(name: "CartSceneView", bundle: nil)
+        let cartSceneVC = storyboard.instantiateViewController(withIdentifier: "CartSceneViewController") as! CartSceneViewController
+        cartSceneVC.itemsInCart = items
+        self.navigationController?.pushViewController(cartSceneVC, animated: true)
+    }
 }

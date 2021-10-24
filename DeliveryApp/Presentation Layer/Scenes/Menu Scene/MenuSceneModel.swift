@@ -17,7 +17,7 @@ struct Items: Decodable {
     let items: [Item]
 }
 
-struct Item: Decodable {
+struct Item: Decodable, Equatable {
     let name:String
     let imageUrl: String
     let description:String

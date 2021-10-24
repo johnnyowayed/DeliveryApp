@@ -26,6 +26,8 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
     @IBOutlet weak var segmentControl:UISegmentedControl!
     
     var tableView: UITableView!
+    
+    var floatingButton = UIButton(type: .custom)
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,11 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         self.registerCell()
         self.fixBackgroundSegmentControl()
         self.interactor?.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.floatingButton.removeFromSuperview()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,6 +68,9 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
     }
 
     func setupUI() {
+        
+        self.title = "Menu"
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
@@ -84,6 +94,8 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         self.collectionView.register(UINib.init(nibName: "TableViewCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
     }
 }
+
+//MARK: - Presenter Protocols
 
 extension MenuSceneViewController: MenuScenePresenterOutput {
 
@@ -138,10 +150,18 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
         cell.itemImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
         cell.button.setTitle(menuItem.price, for: .normal)
         cell.button.addAction {
-            let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
-            self.interactor?.didAddItemToCartAt(oldItems: self.itemsInCart, index: index)
-            cell.button.backgroundColor = .green
-            cell.button.setTitle("Added +1", for: .normal)
+            if cell.button.backgroundColor == .black {
+                let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
+                self.interactor?.didAddItemToCartAt(oldItems: self.itemsInCart, index: index)
+                cell.button.backgroundColor = .green
+                cell.button.setTitle("Added +1", for: .normal)
+            }else {
+                let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
+                self.interactor?.didRemoveItemFromCartAt(oldItems: self.itemsInCart, index: index)
+                cell.button.backgroundColor = .black
+                cell.button.setTitle(menuItem.price, for: .normal)
+            }
+            print("Items in cart: \(self.itemsInCart)")
         }
         
         return cell
@@ -208,7 +228,7 @@ extension MenuSceneViewController {
         let interactor = MenuSceneInteractorImplementation()
         let presenter = MenuScenePresenterImplementation()
         let router = MenuSceneRouterImplementation()
-        let worker = MenuSceneWorkerImplementation()
+        let worker = MockMenuSceneWorkerImplementation()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -229,8 +249,9 @@ extension MenuSceneViewController {
         if y + translation.y >= fullView, y + translation.y <= partialView {
             view.frame = CGRect(x: 0, y: y + translation.y, width: view.frame.width, height: view.frame.height)
             recognizer.setTranslation(CGPoint.zero, in: view)
+            self.createFloatingButton()
         }
-
+        
         if recognizer.state == .ended {
             var duration = velocity.y < 0 ? Double((y - fullView) / -velocity.y) : Double((partialView - y) / velocity.y)
 
@@ -239,6 +260,7 @@ extension MenuSceneViewController {
             UIView.animate(withDuration: duration, delay: 0.0, options: [.allowUserInteraction], animations: {
                 if velocity.y >= 0 {
                     self.view.frame = CGRect(x: 0, y: self.partialView, width: self.view.frame.width, height: self.view.frame.height)
+                    self.floatingButton.removeFromSuperview()
                 } else {
                     self.view.frame = CGRect(x: 0, y: self.fullView, width: self.view.frame.width, height: self.view.frame.height)
                 }
@@ -267,4 +289,34 @@ extension MenuSceneViewController {
     }
 }
 
+//MARK: - Creating a Floating Button
+
+extension MenuSceneViewController {
+    
+    func createFloatingButton() {
+        
+        floatingButton.frame = CGRect(x: 300, y: 700, width: 60, height: 60)
+        floatingButton.setImage(UIImage.init(named: "ic-shopping-cart"), for: .normal)
+        floatingButton.isUserInteractionEnabled = true
+        floatingButton.backgroundColor = .white
+        floatingButton.layer.masksToBounds = false
+        floatingButton.layer.cornerRadius = floatingButton.frame.height/2
+        floatingButton.layer.shadowColor = UIColor.black.cgColor
+        floatingButton.layer.shadowPath = UIBezierPath(roundedRect: floatingButton.bounds, cornerRadius: floatingButton.layer.cornerRadius).cgPath
+        floatingButton.layer.shadowOffset = CGSize(width: 1, height: 3.0)
+        floatingButton.layer.shadowOpacity = 0.3
+        floatingButton.layer.shadowRadius = 1.0
+        floatingButton.addTarget(self,action:#selector(buttonClicked), for: .touchUpInside)
+        
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(floatingButton)
+        }
+    }
+    
+    @objc func buttonClicked(sender:UIButton) {
+        self.floatingButton.setImage(UIImage.init(named: "ic-credit-card"), for: .normal)
+        self.floatingButton.isUserInteractionEnabled = false
+        self.router?.goToCart(withItems: self.itemsInCart)
+    }
+}
 
