@@ -153,8 +153,8 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
             if cell.button.backgroundColor == .black {
                 let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
                 self.interactor?.didAddItemToCartAt(oldItems: self.itemsInCart, index: index)
-                cell.button.backgroundColor = .green
-                cell.button.setTitle("Added +1", for: .normal)
+                cell.button.backgroundColor = .systemGreen
+                cell.button.setTitle("added +1", for: .normal)
             }else {
                 let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
                 self.interactor?.didRemoveItemFromCartAt(oldItems: self.itemsInCart, index: index)

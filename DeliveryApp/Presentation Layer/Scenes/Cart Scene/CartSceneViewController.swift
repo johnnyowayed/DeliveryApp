@@ -33,7 +33,6 @@ final class CartSceneViewController: UIViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
         self.tableView.separatorStyle = .none
     }
     
@@ -53,25 +52,33 @@ extension CartSceneViewController: CartSceneViewControllerOutput {
 
 extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
-        if (self.itemsInCart.count) >= indexPath.row + 1 {
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "TableViewCell1", for: indexPath) as! CartItemTableViewCell
-            cell1.selectionStyle = .none
-            let itemInCart = self.itemsInCart[indexPath.row]
-            cell1.itemName_Label.text = itemInCart.name
-            cell1.itemPrice_Label.text = itemInCart.price
-            cell1.itemImage_ImageView.sd_setImage(with: URL(string: itemInCart.imageUrl), placeholderImage: UIImage(named: "placeholder.png"))
-            cell1.cancelItem_Button.addAction {
-                
+        if !self.itemsInCart.isEmpty {
+            if (self.itemsInCart.count) >= indexPath.row + 1 {
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "TableViewCell1", for: indexPath) as! CartItemTableViewCell
+                cell1.selectionStyle = .none
+                let itemInCart = self.itemsInCart[indexPath.row]
+                cell1.itemName_Label.text = itemInCart.name
+                cell1.itemPrice_Label.text = itemInCart.price
+                cell1.itemImage_ImageView.sd_setImage(with: URL(string: itemInCart.imageUrl), placeholderImage: UIImage(named: "placeholder.png"))
+                cell1.cancelItem_Button.tag = indexPath.row
+                cell1.cancelItem_Button.addTarget(self, action: #selector(cancelItem), for: .touchUpInside)
+                return cell1
+            }else {
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TotalPriceTableViewCell
+                cell2.selectionStyle = .none
+                cell2.delivery_Label.text = "Delivery is free"
+                cell2.value_Label.text = "Value:"
+                cell2.totalPrice_Label.text = "200 usd"
+                return cell2
             }
-            return cell1
-        }else {
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TotalPriceTableViewCell
-            cell2.selectionStyle = .none
-            cell2.delivery_Label.text = "Delivery is free"
-            cell2.value_Label.text = "Value:"
-            cell2.totalPrice_Label.text = "200 usd"
-            return cell2
+        }
+        return UITableViewCell()
+    }
+    
+    @objc func cancelItem(sender: UIButton) {
+        self.itemsInCart.remove(at: sender.tag)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     
