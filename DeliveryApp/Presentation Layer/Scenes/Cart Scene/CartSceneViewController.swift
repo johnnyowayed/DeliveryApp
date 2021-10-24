@@ -8,15 +8,15 @@
 import UIKit
 
 protocol CartScenePresenterOutput: AnyObject {
-    
+    func presenter(newItemsInCart items: [Item])
+    func presenter(newPrice: String)
 }
-
-protocol CartSceneViewControllerOutput {}
 
 final class CartSceneViewController: UIViewController {
     var interactor: CartSceneInteractor?
     
     var itemsInCart = [Item]()
+    var totalPrice = ""
     
     @IBOutlet weak var tableView:UITableView!
         
@@ -26,6 +26,7 @@ final class CartSceneViewController: UIViewController {
         self.setup()
         self.setupUI()
         self.registerCells()
+        self.interactor?.calculateTotalPrice(items: self.itemsInCart)
     }
     
     func setupUI() {
@@ -41,13 +42,22 @@ final class CartSceneViewController: UIViewController {
     }
 }
 
+//MARK: - Presenter Protocols
+
 extension CartSceneViewController: CartScenePresenterOutput {
+    func presenter(newPrice: String) {
+        self.totalPrice = newPrice
+        self.tableView.reloadData()
+    }
     
+    func presenter(newItemsInCart items: [Item]) {
+        self.itemsInCart = items
+        self.interactor?.calculateTotalPrice(items: self.itemsInCart)
+        self.tableView.reloadData()
+    }
 }
 
-extension CartSceneViewController: CartSceneViewControllerOutput {
-    
-}
+//MARK: - TableView Delegate & Data Source
 
 extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,11 +77,7 @@ extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
                 cell2.selectionStyle = .none
                 cell2.delivery_Label.text = "Delivery is free"
                 cell2.value_Label.text = "Value:"
-                var totalPrice = 0
-                for item in itemsInCart {
-                    totalPrice += item.price
-                }
-                cell2.totalPrice_Label.text = "\(totalPrice)" + " " + "usd"
+                cell2.totalPrice_Label.text = self.totalPrice
                 return cell2
             }
         }
@@ -79,10 +85,7 @@ extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func cancelItem(sender: UIButton) {
-        self.itemsInCart.remove(at: sender.tag)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.interactor?.removeItemFromList(items: self.itemsInCart, index: sender.tag)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
