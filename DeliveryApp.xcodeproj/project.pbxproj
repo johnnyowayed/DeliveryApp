@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2CAE0D7D6DB46624EEB28B /* Pods_DeliveryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115C674481FB7FF103A473CC /* Pods_DeliveryApp.framework */; };
 		B26CE9992724048400B1F89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE9982724048400B1F89F /* AppDelegate.swift */; };
 		B26CE99B2724048400B1F89F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE99A2724048400B1F89F /* SceneDelegate.swift */; };
 		B26CE9A22724048600B1F89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9A12724048600B1F89F /* Assets.xcassets */; };
@@ -31,7 +32,6 @@
 		B26CE9F42724091E00B1F89F /* MenuSceneView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9F32724091D00B1F89F /* MenuSceneView.storyboard */; };
 		B26CE9F82724095800B1F89F /* offers.json in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9F62724095800B1F89F /* offers.json */; };
 		B26CE9F92724095800B1F89F /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9F72724095800B1F89F /* menu.json */; };
-		B26CE9FC272409EA00B1F89F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B26CE9FB272409EA00B1F89F /* SDWebImage */; };
 		B26CEA012724125D00B1F89F /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE9FF2724125D00B1F89F /* ImageCollectionViewCell.swift */; };
 		B26CEA022724125D00B1F89F /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26CEA002724125D00B1F89F /* ImageCollectionViewCell.xib */; };
 		B26CEA0D272417A100B1F89F /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CEA0B272417A100B1F89F /* MenuItemTableViewCell.swift */; };
@@ -47,10 +47,14 @@
 		B2B6EA882725791C00354833 /* TotalPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA862725791C00354833 /* TotalPriceTableViewCell.swift */; };
 		B2B6EA892725791C00354833 /* TotalPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B6EA872725791C00354833 /* TotalPriceTableViewCell.xib */; };
 		B2B6EA8D2725936300354833 /* CartSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA8C2725936300354833 /* CartSceneModel.swift */; };
+		B2B6EA942725A0A700354833 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA932725A0A700354833 /* FloatingButton.swift */; };
 		B2FCCD8D272477EC005FDF7F /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FCCD8C272477EC005FDF7F /* UIControl+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D6529A513ED7065D919F168 /* Pods-DeliveryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryApp.release.xcconfig"; path = "Target Support Files/Pods-DeliveryApp/Pods-DeliveryApp.release.xcconfig"; sourceTree = "<group>"; };
+		115C674481FB7FF103A473CC /* Pods_DeliveryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96780D45D43527DD2519F03D /* Pods-DeliveryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryApp.debug.xcconfig"; path = "Target Support Files/Pods-DeliveryApp/Pods-DeliveryApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B26CE9952724048400B1F89F /* DeliveryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26CE9982724048400B1F89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B26CE99A2724048400B1F89F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 		B2B6EA862725791C00354833 /* TotalPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPriceTableViewCell.swift; sourceTree = "<group>"; };
 		B2B6EA872725791C00354833 /* TotalPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalPriceTableViewCell.xib; sourceTree = "<group>"; };
 		B2B6EA8C2725936300354833 /* CartSceneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSceneModel.swift; sourceTree = "<group>"; };
+		B2B6EA932725A0A700354833 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		B2FCCD8C272477EC005FDF7F /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,18 +105,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B26CE9FC272409EA00B1F89F /* SDWebImage in Frameworks */,
+				1F2CAE0D7D6DB46624EEB28B /* Pods_DeliveryApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		445B8D4D6D2B5CD1003C5EA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				115C674481FB7FF103A473CC /* Pods_DeliveryApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B26CE98C2724048400B1F89F = {
 			isa = PBXGroup;
 			children = (
 				B26CE9972724048400B1F89F /* DeliveryApp */,
 				B26CE9962724048400B1F89F /* Products */,
+				F699E0C6E4A91ACFCE5B56A3 /* Pods */,
+				445B8D4D6D2B5CD1003C5EA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,6 +276,7 @@
 		B26CE9FD27240A9500B1F89F /* Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2B6EA922725A08C00354833 /* Floating button */,
 				B2B6EA85272578FD00354833 /* TotalPrice TableViewCell */,
 				B2B6EA802725756700354833 /* CartItem TableViewCell */,
 				B26CEA0A2724176E00B1F89F /* TableView CollectionViewCell */,
@@ -315,12 +331,29 @@
 			path = "TotalPrice TableViewCell";
 			sourceTree = "<group>";
 		};
+		B2B6EA922725A08C00354833 /* Floating button */ = {
+			isa = PBXGroup;
+			children = (
+				B2B6EA932725A0A700354833 /* FloatingButton.swift */,
+			);
+			path = "Floating button";
+			sourceTree = "<group>";
+		};
 		B2FCCD8B272477D6005FDF7F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				B2FCCD8C272477EC005FDF7F /* UIControl+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F699E0C6E4A91ACFCE5B56A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				96780D45D43527DD2519F03D /* Pods-DeliveryApp.debug.xcconfig */,
+				0D6529A513ED7065D919F168 /* Pods-DeliveryApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,18 +363,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B26CE9A92724048600B1F89F /* Build configuration list for PBXNativeTarget "DeliveryApp" */;
 			buildPhases = (
+				AF72E7334C8491C98AA60E3D /* [CP] Check Pods Manifest.lock */,
 				B26CE9912724048400B1F89F /* Sources */,
 				B26CE9922724048400B1F89F /* Frameworks */,
 				B26CE9932724048400B1F89F /* Resources */,
+				B8CE7CC91C7A927DFCD628F9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DeliveryApp;
-			packageProductDependencies = (
-				B26CE9FB272409EA00B1F89F /* SDWebImage */,
-			);
 			productName = DeliveryApp;
 			productReference = B26CE9952724048400B1F89F /* DeliveryApp.app */;
 			productType = "com.apple.product-type.application";
@@ -370,9 +402,6 @@
 				Base,
 			);
 			mainGroup = B26CE98C2724048400B1F89F;
-			packageReferences = (
-				B26CE9FA272409EA00B1F89F /* XCRemoteSwiftPackageReference "SDWebImage" */,
-			);
 			productRefGroup = B26CE9962724048400B1F89F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -404,6 +433,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AF72E7334C8491C98AA60E3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeliveryApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8CE7CC91C7A927DFCD628F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeliveryApp/Pods-DeliveryApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeliveryApp/Pods-DeliveryApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliveryApp/Pods-DeliveryApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B26CE9912724048400B1F89F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -428,6 +499,7 @@
 				B2B6EA78272572C600354833 /* CartScenePresenter.swift in Sources */,
 				B26CE9E1272408CA00B1F89F /* HomeScenePresenter.swift in Sources */,
 				B26CEA11272417BD00B1F89F /* TableViewCollectionViewCell.swift in Sources */,
+				B2B6EA942725A0A700354833 /* FloatingButton.swift in Sources */,
 				B26CE9F22724090A00B1F89F /* MenuSceneModel.swift in Sources */,
 				B2B6EA8D2725936300354833 /* CartSceneModel.swift in Sources */,
 				B26CE9BA272405D900B1F89F /* JSONResponseDecoder.swift in Sources */,
@@ -572,6 +644,7 @@
 		};
 		B26CE9AA2724048600B1F89F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96780D45D43527DD2519F03D /* Pods-DeliveryApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -600,6 +673,7 @@
 		};
 		B26CE9AB2724048600B1F89F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D6529A513ED7065D919F168 /* Pods-DeliveryApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -648,25 +722,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B26CE9FA272409EA00B1F89F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B26CE9FB272409EA00B1F89F /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B26CE9FA272409EA00B1F89F /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B26CE98D2724048400B1F89F /* Project object */;
 }
