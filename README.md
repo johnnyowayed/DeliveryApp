@@ -34,12 +34,12 @@ The Menu which is a bottom sheet showing on top of the main view contains a segm
 
 ## Application Architecture
 
-The Delivery App follows the Clean Swift architecture using Xcode Template I create to ease the creation of each scene. The ViewController, Interactor and Presenter are the three main components of Clean Swift.\
+The Delivery App follows the Clean Swift architecture using Xcode Template I create to ease the creation of each scene. The ViewController, Interactor and Presenter are the three main components of Clean Swift.
 ### Clean Swift Life Cylce: 
 - The view controller accepts a user event, constructs a request object, and send it to the interactor.
 - The interactor does some work with the request, constructs a view model and send it to the presenter.
 - The presenter formats the data in the response and constructs a view model object and send it to the view controller.
-- the view controller displays the results contained in the view model to the use.\
+- the view controller displays the results contained in the view model to the use.
 
 ## Features
 
