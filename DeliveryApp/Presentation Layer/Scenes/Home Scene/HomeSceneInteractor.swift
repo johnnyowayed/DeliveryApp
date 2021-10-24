@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeSceneInteractor {
-    func viewDidLoad()
+    func  viewDidLoad()
 }
 
 final class HomeSceneInteractorImplementation {
@@ -20,8 +20,9 @@ extension HomeSceneInteractorImplementation: HomeSceneInteractor {
     func viewDidLoad() {
         let _ = worker?.fetchImages(completion: { response in
             switch response {
-            case .success(let homeSceneModel):
-                self.presenter?.interactor(didRetreiveOffers: homeSceneModel)
+            case .success(let imageOffers):
+                let response = HomeModel.Response(imageOffers: imageOffers)
+                self.presenter?.interactor(didRetreiveOffers: response)
             case .failure(_):
                 print("Failed to fetch data")
             }

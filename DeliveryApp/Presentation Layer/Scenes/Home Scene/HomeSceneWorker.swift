@@ -12,7 +12,7 @@ protocol HomeSceneWorker {
     func fetchImages(completion: @escaping ImagesResponse) -> URLSessionDataTask?
 }
 
-typealias ImagesResponse = (Result<HomeSceneModel, Error>) -> Void
+typealias ImagesResponse = (Result<[ImageOffer], Error>) -> Void
 
 final class HomeSceneWorkerImplementation {
     var presenter: HomeScenePresenter?
@@ -29,7 +29,7 @@ final class MockHomeSceneWorkerImplementation: HomeSceneWorker {
         if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try! JSONDecoder().decode(HomeSceneModel.self, from: data)
+                let jsonResult = try! JSONDecoder().decode([ImageOffer].self, from: data)
                 completion(.success(jsonResult))
             } catch {
             }

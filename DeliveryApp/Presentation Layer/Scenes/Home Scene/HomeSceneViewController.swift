@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol HomeScenePresenterOutput: AnyObject {
-    func presenter(didRetreiveImageUrls imageUrls: [URL])
+    func didReceiveImageOffers(ViewModel: HomeModel.ViewModel)
 }
 
 final class HomeSceneViewController: UIViewController {
@@ -42,7 +42,13 @@ final class HomeSceneViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
         let height = self.collectionView.frame.height
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        var statusBarHeight:CGFloat = 0
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
         flowLayout.itemSize = CGSize(width: width, height: height + statusBarHeight)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
@@ -61,7 +67,7 @@ final class HomeSceneViewController: UIViewController {
     // MARK: Auto Scrolling with 3s Timer
     
     func setuptimer() {
-        let _ = Timer.scheduledTimer(timeInterval: 3, target: self , selector:#selector(startScrolling), userInfo: nil, repeats: true)
+        let _ = Timer.scheduledTimer(timeInterval: 3, target: self , selector:#selector(startScrolling), userInfo: nil, repeats: true) //TODO: Timer as variable
     }
     
     @objc func startScrolling() {
@@ -78,8 +84,8 @@ final class HomeSceneViewController: UIViewController {
 }
 
 extension HomeSceneViewController: HomeScenePresenterOutput {
-    func presenter(didRetreiveImageUrls imageUrls: [URL]) {
-        self.imageURLs = imageUrls
+    func didReceiveImageOffers(ViewModel: HomeModel.ViewModel) {
+        self.imageURLs = ViewModel.imageUrls
         self.collectionView.reloadData()
     }
 }
@@ -87,7 +93,7 @@ extension HomeSceneViewController: HomeScenePresenterOutput {
 extension HomeSceneViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.imageURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

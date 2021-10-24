@@ -21,7 +21,7 @@ extension HomeSceneRouterImplementation: HomeSceneRouter {
     func setupBottomSheet() {
         let storyboard = UIStoryboard(name: "MenuSceneView", bundle: nil)
         let menuSceneVC = storyboard.instantiateViewController(withIdentifier: "MenuSceneViewController") as! MenuSceneViewController
-        menuSceneVC.partialView = 550
+        menuSceneVC.partialView = 550 //TODO: Percentage from screen
 
         source?.addChild(menuSceneVC)
         source?.view.addSubview(menuSceneVC.view)

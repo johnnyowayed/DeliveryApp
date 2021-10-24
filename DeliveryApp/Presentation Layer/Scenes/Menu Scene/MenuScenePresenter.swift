@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MenuScenePresenter {
-    func interactor(didReceiveMenu menu: MenuSceneModel)
+    func interactor(didReceiveMenu menu: Menu)
     func itemsInCart(items: [Item])
 }
 
@@ -22,7 +22,7 @@ extension MenuScenePresenterImplementation: MenuScenePresenter {
         self.viewController?.presenter(newItemsInCart: items)
     }
     
-    func interactor(didReceiveMenu menuItems: MenuSceneModel) {
+    func interactor(didReceiveMenu menuItems: Menu) {
         self.viewController?.presenter(didReceiveMenuModel: menuItems.menu)
     }
 }

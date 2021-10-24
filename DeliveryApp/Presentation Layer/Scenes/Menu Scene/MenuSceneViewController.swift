@@ -25,7 +25,7 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControl:UISegmentedControl!
     
-    var tableView: UITableView!
+    var tableViews = [UITableView]()
     
     var floatingButton = UIButton(type: .custom)
         
@@ -125,14 +125,19 @@ extension MenuSceneViewController:UICollectionViewDelegate, UICollectionViewData
         cell.tableView.dataSource = self
         cell.tableView.tag = indexPath.row
         cell.tableView.register(UINib.init(nibName: "MenuItemTableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
-        
-        self.tableView = cell.tableView
+        cell.tableView.automaticallyAdjustsScrollIndicatorInsets = true
+        self.tableViews.append(cell.tableView)
 
         return cell
     }
+}
+
+extension MenuSceneViewController: UIScrollViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.segmentControl.selectedSegmentIndex = indexPath.row
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let indexPath = collectionView.indexPathsForVisibleItems.first {
+            self.segmentControl.selectedSegmentIndex = indexPath.row
+        }
     }
 }
 
@@ -143,14 +148,17 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! MenuItemTableViewCell
         cell.selectionStyle = .none
+        
         let menuItem = self.menuItems[tableView.tag].items[indexPath.row]
         cell.title_Label.text = menuItem.name
         cell.desciption_Label.text = menuItem.description
+        
         let imageUrl = URL.init(string: menuItem.imageUrl)
         cell.itemImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
         cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
+        
         cell.button.addAction {
-            if cell.button.backgroundColor == .black {
+            if cell.button.backgroundColor == .black { //TODO: Solve with state
                 let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
                 self.interactor?.didAddItemToCartAt(oldItems: self.itemsInCart, index: index)
                 cell.button.backgroundColor = .systemGreen
@@ -161,9 +169,7 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
                 cell.button.backgroundColor = .black
                 cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
             }
-            print("Items in cart: \(self.itemsInCart)")
         }
-        
         return cell
     }
     
@@ -177,6 +183,9 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
 extension MenuSceneViewController {
     
     func setupSegmentControl() {
+        
+        //TODO: number of segments for loop
+        
         segmentControl.setTitle("Pizza", forSegmentAt: 0)
         segmentControl.setTitle("Sushi", forSegmentAt: 1)
         segmentControl.setTitle("Drinks", forSegmentAt: 2)
@@ -194,17 +203,7 @@ extension MenuSceneViewController {
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        
-        switch sender.selectedSegmentIndex {
-        case 0:
-            self.collectionView.scrollToItem(at: IndexPath.init(item: 0, section: 0), at: .left, animated: true)
-        case 1:
-            self.collectionView.scrollToItem(at: IndexPath.init(item: 1, section: 0), at: .left, animated: true)
-        case 2:
-            self.collectionView.scrollToItem(at: IndexPath.init(item: 2, section: 0), at: .left, animated: true)
-        default:
-            return
-        }
+        self.collectionView.scrollToItem(at: IndexPath.init(item: sender.selectedSegmentIndex, section: 0), at: .left, animated: true)
     }
     
     // To Solve iOS 13 segement control background color issue
@@ -267,7 +266,9 @@ extension MenuSceneViewController {
 
             }, completion: { [weak self] _ in
                 if velocity.y < 0 {
-                    self?.tableView.isScrollEnabled = true
+                    for tableView in self!.tableViews {
+                        tableView.isScrollEnabled = true
+                    }
                 }
             })
         }
@@ -280,9 +281,13 @@ extension MenuSceneViewController {
         let y = view.frame.minY
         
         if (y == partialView && direction < 0) {
-            self.tableView.isScrollEnabled = false
+            for tableView in self.tableViews {
+                tableView.isScrollEnabled = false
+            }
         } else {
-            self.tableView.isScrollEnabled = true
+            for tableView in self.tableViews {
+                tableView.isScrollEnabled = true
+            }
         }
 
         return false
@@ -308,11 +313,11 @@ extension MenuSceneViewController {
         floatingButton.layer.shadowRadius = 1.0
         floatingButton.addTarget(self,action:#selector(buttonClicked), for: .touchUpInside)
         
-        if let window = UIApplication.shared.keyWindow {
-            window.addSubview(floatingButton)
-        }
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        window?.addSubview(floatingButton)
     }
     
+    //TODO: button action extension
     @objc func buttonClicked(sender:UIButton) {
         self.floatingButton.setImage(UIImage.init(named: "ic-credit-card"), for: .normal)
         self.floatingButton.isUserInteractionEnabled = false

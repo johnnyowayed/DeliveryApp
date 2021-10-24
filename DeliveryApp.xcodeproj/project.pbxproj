@@ -28,7 +28,6 @@
 		B26CE9EF2724090A00B1F89F /* MenuSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE9E92724090A00B1F89F /* MenuSceneRouter.swift */; };
 		B26CE9F02724090A00B1F89F /* MenuSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE9EA2724090A00B1F89F /* MenuSceneViewController.swift */; };
 		B26CE9F12724090A00B1F89F /* MenuSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE9EB2724090A00B1F89F /* MenuSceneInteractor.swift */; };
-		B26CE9F22724090A00B1F89F /* MenuSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CE9EC2724090A00B1F89F /* MenuSceneModel.swift */; };
 		B26CE9F42724091E00B1F89F /* MenuSceneView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9F32724091D00B1F89F /* MenuSceneView.storyboard */; };
 		B26CE9F82724095800B1F89F /* offers.json in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9F62724095800B1F89F /* offers.json */; };
 		B26CE9F92724095800B1F89F /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = B26CE9F72724095800B1F89F /* menu.json */; };
@@ -48,6 +47,8 @@
 		B2B6EA892725791C00354833 /* TotalPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B6EA872725791C00354833 /* TotalPriceTableViewCell.xib */; };
 		B2B6EA8D2725936300354833 /* CartSceneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA8C2725936300354833 /* CartSceneModel.swift */; };
 		B2B6EA942725A0A700354833 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA932725A0A700354833 /* FloatingButton.swift */; };
+		B2B6EA992725CD4700354833 /* ImageOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA982725CD4700354833 /* ImageOffer.swift */; };
+		B2B6EAA82725F3CB00354833 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EAA72725F3CB00354833 /* Menu.swift */; };
 		B2FCCD8D272477EC005FDF7F /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FCCD8C272477EC005FDF7F /* UIControl+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +78,6 @@
 		B26CE9E92724090A00B1F89F /* MenuSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneRouter.swift; sourceTree = "<group>"; };
 		B26CE9EA2724090A00B1F89F /* MenuSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneViewController.swift; sourceTree = "<group>"; };
 		B26CE9EB2724090A00B1F89F /* MenuSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneInteractor.swift; sourceTree = "<group>"; };
-		B26CE9EC2724090A00B1F89F /* MenuSceneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneModel.swift; sourceTree = "<group>"; };
 		B26CE9F32724091D00B1F89F /* MenuSceneView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuSceneView.storyboard; sourceTree = "<group>"; };
 		B26CE9F62724095800B1F89F /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
 		B26CE9F72724095800B1F89F /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		B2B6EA872725791C00354833 /* TotalPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalPriceTableViewCell.xib; sourceTree = "<group>"; };
 		B2B6EA8C2725936300354833 /* CartSceneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSceneModel.swift; sourceTree = "<group>"; };
 		B2B6EA932725A0A700354833 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		B2B6EA982725CD4700354833 /* ImageOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOffer.swift; sourceTree = "<group>"; };
+		B2B6EAA72725F3CB00354833 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B2FCCD8C272477EC005FDF7F /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 		B26CE9AD272404B700B1F89F /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
+				B2B6EA952725BA2B00354833 /* Models */,
 				B26CE9BB2724065700B1F89F /* Scenes */,
 			);
 			path = "Presentation Layer";
@@ -247,7 +250,6 @@
 				B26CE9E72724090A00B1F89F /* MenuScenePresenter.swift */,
 				B26CE9E82724090A00B1F89F /* MenuSceneWorker.swift */,
 				B26CE9E92724090A00B1F89F /* MenuSceneRouter.swift */,
-				B26CE9EC2724090A00B1F89F /* MenuSceneModel.swift */,
 			);
 			path = "Menu Scene";
 			sourceTree = "<group>";
@@ -337,6 +339,15 @@
 				B2B6EA932725A0A700354833 /* FloatingButton.swift */,
 			);
 			path = "Floating button";
+			sourceTree = "<group>";
+		};
+		B2B6EA952725BA2B00354833 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B2B6EA982725CD4700354833 /* ImageOffer.swift */,
+				B2B6EAA72725F3CB00354833 /* Menu.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B2FCCD8B272477D6005FDF7F /* Extensions */ = {
@@ -483,6 +494,7 @@
 				B26CE9B52724058B00B1F89F /* WebServiceConstants.swift in Sources */,
 				B26CE9ED2724090A00B1F89F /* MenuScenePresenter.swift in Sources */,
 				B26CE9F12724090A00B1F89F /* MenuSceneInteractor.swift in Sources */,
+				B2B6EAA82725F3CB00354833 /* Menu.swift in Sources */,
 				B2B6EA882725791C00354833 /* TotalPriceTableViewCell.swift in Sources */,
 				B26CE9E2272408CA00B1F89F /* HomeSceneWorker.swift in Sources */,
 				B26CE9EE2724090A00B1F89F /* MenuSceneWorker.swift in Sources */,
@@ -500,7 +512,6 @@
 				B26CE9E1272408CA00B1F89F /* HomeScenePresenter.swift in Sources */,
 				B26CEA11272417BD00B1F89F /* TableViewCollectionViewCell.swift in Sources */,
 				B2B6EA942725A0A700354833 /* FloatingButton.swift in Sources */,
-				B26CE9F22724090A00B1F89F /* MenuSceneModel.swift in Sources */,
 				B2B6EA8D2725936300354833 /* CartSceneModel.swift in Sources */,
 				B26CE9BA272405D900B1F89F /* JSONResponseDecoder.swift in Sources */,
 				B26CEA0D272417A100B1F89F /* MenuItemTableViewCell.swift in Sources */,
@@ -508,6 +519,7 @@
 				B2FCCD8D272477EC005FDF7F /* UIControl+Extension.swift in Sources */,
 				B26CEA012724125D00B1F89F /* ImageCollectionViewCell.swift in Sources */,
 				B2B6EA7C272572C600354833 /* CartSceneInteractor.swift in Sources */,
+				B2B6EA992725CD4700354833 /* ImageOffer.swift in Sources */,
 				B2B6EA832725758E00354833 /* CartItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,19 @@
 import UIKit
 import Foundation
 
-struct HomeSceneModel: Decodable {
-    let offers: [imageOffer]
-}
-
-struct imageOffer: Decodable {
-    let imageUrl: String
+enum HomeModel
+{
+    // MARK: Use cases
+    
+    struct Request {
+    }
+    
+    struct Response{
+        let imageOffers: [ImageOffer]
+    }
+    
+    struct ViewModel
+    {
+        var imageUrls: [URL]
+    }
 }
