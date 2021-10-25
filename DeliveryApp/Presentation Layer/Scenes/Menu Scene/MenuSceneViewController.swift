@@ -33,7 +33,6 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         
         self.setup()
         self.setupUI()
-        self.setupSegmentControl()
         self.registerCell()
         self.fixBackgroundSegmentControl()
         self.interactor?.fetchMenuItems(request: nil)
@@ -72,10 +71,10 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
+        let uiScreenHeight = UIScreen.main.bounds.height
         let flowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
-        flowLayout.itemSize = CGSize(width: width, height: partialView + 50)
+        flowLayout.itemSize = CGSize(width: width, height: partialView + uiScreenHeight * 0.24)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .horizontal
@@ -99,6 +98,7 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
 extension MenuSceneViewController: MenuScenePresenterOutput {
     func presenter(didReceiveMenus ViewModel: MenuModel.ViewModel) {
         self.menuItems = ViewModel.menus
+        self.setupSegmentControl()
         self.collectionView.reloadData()
     }
 }
@@ -148,19 +148,21 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
         cell.desciption_Label.text = menuItem.description
         
         let imageUrl = URL.init(string: menuItem.imageUrl)
-        cell.itemImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder.png"))
+        cell.itemImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
         cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
         
         cell.button.addAction {
-            if cell.button.backgroundColor == .black { //TODO: Solve with state
+            if cell.button.tag == 0 {
                 let itemAdded = self.menuItems[tableView.tag].items[indexPath.row]
                 self.itemsInCart.append(itemAdded)
+                cell.button.tag = 1
                 cell.button.backgroundColor = .systemGreen
                 cell.button.setTitle("added +1", for: .normal)
             }else {
                 let itemToBeRemoved = self.menuItems[tableView.tag].items[indexPath.row]
                 self.itemsInCart.removeAll { $0 == itemToBeRemoved}
                 cell.button.backgroundColor = .black
+                cell.button.tag = 0
                 cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
             }
         }
@@ -178,12 +180,11 @@ extension MenuSceneViewController {
     
     func setupSegmentControl() {
         
-        //TODO: number of segments for loop
-        
-        segmentControl.setTitle("Pizza", forSegmentAt: 0)
-        segmentControl.setTitle("Sushi", forSegmentAt: 1)
-        segmentControl.setTitle("Drinks", forSegmentAt: 2)
-        
+        if !self.menuItems.isEmpty {
+            for i in 0...self.menuItems.count-1 {
+                segmentControl.setTitle(self.menuItems[i].category, forSegmentAt: i)
+            }
+        }
         segmentControl.selectedSegmentIndex = 0
         
         segmentControl.backgroundColor = .clear
@@ -294,7 +295,10 @@ extension MenuSceneViewController {
     
     func createFloatingButton() {
         
-        floatingButton.frame = CGRect(x: 300, y: 700, width: 60, height: 60)
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        print()
+        floatingButton.frame = CGRect(x: screenWidth*0.80, y: screenHeight*0.85, width: 60, height: 60)
         floatingButton.setImage(UIImage.init(named: "ic-shopping-cart"), for: .normal)
         floatingButton.isUserInteractionEnabled = true
         floatingButton.backgroundColor = .white
@@ -311,7 +315,6 @@ extension MenuSceneViewController {
         window?.addSubview(floatingButton)
     }
     
-    //TODO: button action extension
     @objc func buttonClicked(sender:UIButton) {
         self.floatingButton.setImage(UIImage.init(named: "ic-credit-card"), for: .normal)
         self.floatingButton.isUserInteractionEnabled = false

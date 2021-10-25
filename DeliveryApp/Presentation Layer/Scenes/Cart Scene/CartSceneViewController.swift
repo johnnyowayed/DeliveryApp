@@ -68,7 +68,7 @@ extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
                 let itemInCart = self.itemsInCart[indexPath.row]
                 cell1.itemName_Label.text = itemInCart.name
                 cell1.itemPrice_Label.text = "\(itemInCart.price)" + " " + itemInCart.currency
-                cell1.itemImage_ImageView.sd_setImage(with: URL(string: itemInCart.imageUrl), placeholderImage: UIImage(named: "placeholder.png"))
+                cell1.itemImage_ImageView.sd_setImage(with: URL(string: itemInCart.imageUrl), placeholderImage: UIImage(named: "placeholder"))
                 cell1.cancelItem_Button.tag = indexPath.row
                 cell1.cancelItem_Button.addTarget(self, action: #selector(cancelItem), for: .touchUpInside)
                 return cell1

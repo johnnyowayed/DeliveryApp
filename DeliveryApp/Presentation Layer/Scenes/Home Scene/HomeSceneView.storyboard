@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pAW-pg-lf0">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="HomeSceneViewController" id="Y6W-OH-hqX" customClass="HomeSceneViewController" customModule="DeliveryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XZf-yn-RGw">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p9p-wP-dQq">
                                     <size key="itemSize" width="128" height="128"/>
@@ -50,24 +50,25 @@
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DuN-1L-yxj">
-                                <rect key="frame" x="129" y="567" width="156" height="26"/>
+                                <rect key="frame" x="136.66666666666666" y="572" width="154.99999999999997" height="25"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XZf-yn-RGw" secondAttribute="bottom" constant="200" id="H6m-Lo-df6"/>
                             <constraint firstItem="XZf-yn-RGw" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Jmh-pL-uwh"/>
                             <constraint firstItem="DuN-1L-yxj" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Jpt-ys-inF"/>
                             <constraint firstItem="XZf-yn-RGw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="M1K-6m-ZpL"/>
                             <constraint firstItem="XZf-yn-RGw" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Q2f-d4-guz"/>
-                            <constraint firstItem="DuN-1L-yxj" firstAttribute="top" secondItem="XZf-yn-RGw" secondAttribute="bottom" constant="-95" id="ayI-Ar-neI"/>
+                            <constraint firstAttribute="bottom" secondItem="XZf-yn-RGw" secondAttribute="bottom" constant="234" id="Tf2-7p-KOK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="DuN-1L-yxj" secondAttribute="bottom" constant="295" id="rq3-Cw-dyf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o2f-dS-on3"/>
                     <connections>
                         <outlet property="collectionView" destination="XZf-yn-RGw" id="Wq0-h1-ZMS"/>
                         <outlet property="pageControl" destination="DuN-1L-yxj" id="PEi-yW-amP"/>
+                        <outlet property="pageControlBottomConstraint" destination="rq3-Cw-dyf" id="8ti-jh-vOx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -80,7 +81,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pAW-pg-lf0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ro-R8-RwP">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

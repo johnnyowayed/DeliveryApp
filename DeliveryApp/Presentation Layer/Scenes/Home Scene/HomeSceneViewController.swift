@@ -19,7 +19,11 @@ final class HomeSceneViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    
+    @IBOutlet weak var pageControlBottomConstraint: NSLayoutConstraint!
+    
     var imageURLs = [URL]()
+    var timeInterval = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,8 @@ final class HomeSceneViewController: UIViewController {
         
         self.view.backgroundColor = .systemBackground
         
+        self.pageControlBottomConstraint.constant = UIScreen.main.bounds.height * 0.42
+        
         let flowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
         let height = self.collectionView.frame.height
@@ -49,14 +55,16 @@ final class HomeSceneViewController: UIViewController {
         } else {
             statusBarHeight = UIApplication.shared.statusBarFrame.height
         }
-        flowLayout.itemSize = CGSize(width: width, height: height + statusBarHeight)
+                
+        flowLayout.itemSize = CGSize(width: width, height: height + statusBarHeight*2)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .horizontal
         
         self.collectionView?.collectionViewLayout = flowLayout
         self.collectionView.isPagingEnabled = true
-        self.pageControl.size(forNumberOfPages: 3)
+        self.pageControl.size(forNumberOfPages: self.imageURLs.count)
+        self.collectionView.bringSubviewToFront(self.pageControl)
         self.setuptimer()
     }
     
@@ -67,7 +75,13 @@ final class HomeSceneViewController: UIViewController {
     // MARK: Auto Scrolling with 3s Timer
     
     func setuptimer() {
-        let _ = Timer.scheduledTimer(timeInterval: 3, target: self , selector:#selector(startScrolling), userInfo: nil, repeats: true) //TODO: Timer as variable
+        let _ = Timer.scheduledTimer(timeInterval: TimeInterval(self.timeInterval), target: self , selector:#selector(startScrolling), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        print()
     }
     
     @objc func startScrolling() {
@@ -98,7 +112,7 @@ extension HomeSceneViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCollectionViewCell
-        cell.imageView.sd_setImage(with: imageURLs[indexPath.row], placeholderImage: UIImage(named: "placeholder.png"))
+        cell.imageView.sd_setImage(with: imageURLs[indexPath.row], placeholderImage: UIImage(named: "placeholder"))
         
         return cell
     }
