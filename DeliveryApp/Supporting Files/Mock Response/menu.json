@@ -1,5 +1,5 @@
 
-{"menu": [{
+[{
     "category": "Pizza",
     "items": [
         {"name" : "Vegitarian",
@@ -74,4 +74,4 @@
             }
         ]
     }]
-}
+

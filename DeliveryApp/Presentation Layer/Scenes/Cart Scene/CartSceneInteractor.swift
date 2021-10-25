@@ -8,8 +8,8 @@
 import Foundation
 
 protocol CartSceneInteractor {
-    func removeItemFromList(items: [Item], index: Int)
-    func calculateTotalPrice(items: [Item])
+    func removeItemFromList(items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem], index: Int)
+    func calculateTotalPrice(items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem])
 }
 
 final class CartSceneInteractorImplementation {
@@ -18,7 +18,7 @@ final class CartSceneInteractorImplementation {
 
 extension CartSceneInteractorImplementation: CartSceneInteractor {
     
-    func calculateTotalPrice(items: [Item]) {
+    func calculateTotalPrice(items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem]) {
         var totalPrice = 0
         for item in items {
             totalPrice += item.price
@@ -26,7 +26,7 @@ extension CartSceneInteractorImplementation: CartSceneInteractor {
         self.presenter?.interactor(didCalculateTotalPrice: totalPrice)
     }
     
-    func removeItemFromList(items: [Item], index: Int) {
+    func removeItemFromList(items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem], index: Int) {
         var newItems = items
         newItems.remove(at: index)
         self.presenter?.interactor(didRemoveItemFromCart: newItems)

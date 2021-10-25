@@ -8,14 +8,14 @@
 import UIKit
 
 protocol CartScenePresenterOutput: AnyObject {
-    func presenter(newItemsInCart items: [Item])
+    func presenter(newItemsInCart items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem])
     func presenter(newPrice: String)
 }
 
 final class CartSceneViewController: UIViewController {
     var interactor: CartSceneInteractor?
     
-    var itemsInCart = [Item]()
+    var itemsInCart = [MenuModel.ViewModel.DisplayedMenu.DisplayedItem]()
     var totalPrice = ""
     
     @IBOutlet weak var tableView:UITableView!
@@ -50,7 +50,7 @@ extension CartSceneViewController: CartScenePresenterOutput {
         self.tableView.reloadData()
     }
     
-    func presenter(newItemsInCart items: [Item]) {
+    func presenter(newItemsInCart items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem]) {
         self.itemsInCart = items
         self.interactor?.calculateTotalPrice(items: self.itemsInCart)
         self.tableView.reloadData()

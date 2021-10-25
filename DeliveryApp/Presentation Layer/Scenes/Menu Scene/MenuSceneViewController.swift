@@ -8,16 +8,15 @@
 import UIKit
 
 protocol MenuScenePresenterOutput: AnyObject {
-    func presenter(didReceiveMenuModel menuItems: [Items])
-    func presenter(newItemsInCart items: [Item])
+    func presenter(didReceiveMenus ViewModel: MenuModel.ViewModel)
 }
 
 final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelegate {
     var interactor: MenuSceneInteractor?
     var router: MenuSceneRouter?
     
-    var menuItems = [Items]()
-    var itemsInCart = [Item]()
+    var menuItems = [MenuModel.ViewModel.DisplayedMenu]()
+    var itemsInCart = [MenuModel.ViewModel.DisplayedMenu.DisplayedItem]()
     
     let fullView: CGFloat = 50 // this view's y origin case full view (bottom sheet expanded)
     var partialView = CGFloat() // the view's y origin case partial view (bottom sheet collapsed)
@@ -37,7 +36,7 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         self.setupSegmentControl()
         self.registerCell()
         self.fixBackgroundSegmentControl()
-        self.interactor?.viewDidLoad()
+        self.interactor?.fetchMenuItems(request: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,13 +97,8 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
 //MARK: - Presenter Protocols
 
 extension MenuSceneViewController: MenuScenePresenterOutput {
-
-    func presenter(newItemsInCart items: [Item]) {
-        self.itemsInCart = items
-    }
-    
-    func presenter(didReceiveMenuModel menuItems: [Items]) {
-        self.menuItems = menuItems
+    func presenter(didReceiveMenus ViewModel: MenuModel.ViewModel) {
+        self.menuItems = ViewModel.menus
         self.collectionView.reloadData()
     }
 }
@@ -159,13 +153,13 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
         
         cell.button.addAction {
             if cell.button.backgroundColor == .black { //TODO: Solve with state
-                let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
-                self.interactor?.didAddItemToCartAt(oldItems: self.itemsInCart, index: index)
+                let itemAdded = self.menuItems[tableView.tag].items[indexPath.row]
+                self.itemsInCart.append(itemAdded)
                 cell.button.backgroundColor = .systemGreen
                 cell.button.setTitle("added +1", for: .normal)
             }else {
-                let index = IndexPath.init(row: indexPath.row, section: tableView.tag)
-                self.interactor?.didRemoveItemFromCartAt(oldItems: self.itemsInCart, index: index)
+                let itemToBeRemoved = self.menuItems[tableView.tag].items[indexPath.row]
+                self.itemsInCart.removeAll { $0 == itemToBeRemoved}
                 cell.button.backgroundColor = .black
                 cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
             }
