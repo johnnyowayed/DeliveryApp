@@ -57,9 +57,9 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         super.viewDidLayoutSubviews()
         view.layer.cornerRadius = 35
         view.layer.borderWidth = 0.1
-        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderColor = UIColor.systemWhite.cgColor
         view?.layer.masksToBounds = false
-        view?.layer.shadowColor = UIColor.black.cgColor
+        view?.layer.shadowColor = UIColor.shadowColor.cgColor
         view?.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
         view?.layer.shadowRadius = 35
         view?.layer.shadowOpacity = 1.0
@@ -161,7 +161,7 @@ extension MenuSceneViewController:  UITableViewDelegate, UITableViewDataSource {
             }else {
                 let itemToBeRemoved = self.menuItems[tableView.tag].items[indexPath.row]
                 self.itemsInCart.removeAll { $0 == itemToBeRemoved}
-                cell.button.backgroundColor = .black
+                cell.button.backgroundColor = .systemBlack
                 cell.button.tag = 0
                 cell.button.setTitle("\(menuItem.price)" + " " + menuItem.currency, for: .normal)
             }
@@ -194,7 +194,7 @@ extension MenuSceneViewController {
         segmentControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
-        segmentControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30), NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30), NSAttributedString.Key.foregroundColor: UIColor.systemBlack], for: .selected)
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -301,15 +301,16 @@ extension MenuSceneViewController {
         floatingButton.frame = CGRect(x: screenWidth*0.80, y: screenHeight*0.85, width: 60, height: 60)
         floatingButton.setImage(UIImage.init(named: "ic-shopping-cart"), for: .normal)
         floatingButton.isUserInteractionEnabled = true
-        floatingButton.backgroundColor = .white
+        floatingButton.backgroundColor = .systemWhite
         floatingButton.layer.masksToBounds = false
         floatingButton.layer.cornerRadius = floatingButton.frame.height/2
-        floatingButton.layer.shadowColor = UIColor.black.cgColor
+        floatingButton.layer.shadowColor = UIColor.shadowColor.cgColor
         floatingButton.layer.shadowPath = UIBezierPath(roundedRect: floatingButton.bounds, cornerRadius: floatingButton.layer.cornerRadius).cgPath
         floatingButton.layer.shadowOffset = CGSize(width: 1, height: 3.0)
-        floatingButton.layer.shadowOpacity = 0.3
+        floatingButton.layer.shadowOpacity = 0.4
         floatingButton.layer.shadowRadius = 1.0
         floatingButton.addTarget(self,action:#selector(buttonClicked), for: .touchUpInside)
+        floatingButton.tintColor = .systemBlack
         
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         window?.addSubview(floatingButton)

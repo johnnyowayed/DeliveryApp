@@ -25,10 +25,10 @@ class TotalPriceTableViewCell: UITableViewCell {
         self.delivery_Label.textColor = .lightGray
         
         self.value_Label.font = .systemFont(ofSize: 16)
-        self.value_Label.textColor = .black
+        self.value_Label.textColor = .systemBlack
         
         self.totalPrice_Label.font = .boldSystemFont(ofSize: 30)
-        self.totalPrice_Label.textColor = .black
+        self.totalPrice_Label.textColor = .systemBlack
         
     }
     

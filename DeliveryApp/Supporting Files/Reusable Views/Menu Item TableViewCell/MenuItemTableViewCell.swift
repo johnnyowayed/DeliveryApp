@@ -27,8 +27,8 @@ class MenuItemTableViewCell: UITableViewCell {
         self.outerView.layer.cornerRadius = 24
         self.outerView.layer.masksToBounds = true
         
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOpacity = 0.2
+        contentView.layer.shadowColor = UIColor.shadowColor.cgColor
+        contentView.layer.shadowOpacity = 0.5
         contentView.layer.shadowOffset = .zero
         contentView .layer.shadowRadius = 10
         
@@ -37,7 +37,8 @@ class MenuItemTableViewCell: UITableViewCell {
         self.desciption_Label.textColor = .lightGray
         
         self.button.layer.cornerRadius = self.button.bounds.height/2
-        self.button.tintColor = .white
+        self.button.tintColor = .systemWhite
+        self.button.backgroundColor = .systemBlack
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

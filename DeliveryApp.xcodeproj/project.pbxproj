@@ -37,6 +37,8 @@
 		B26CEA0E272417A100B1F89F /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26CEA0C272417A100B1F89F /* MenuItemTableViewCell.xib */; };
 		B26CEA11272417BD00B1F89F /* TableViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CEA0F272417BD00B1F89F /* TableViewCollectionViewCell.swift */; };
 		B26CEA12272417BD00B1F89F /* TableViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26CEA10272417BD00B1F89F /* TableViewCollectionViewCell.xib */; };
+		B29F116A27280A340090492F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B29F116927280A340090492F /* Colors.xcassets */; };
+		B29F116C27280A8E0090492F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29F116B27280A8E0090492F /* UIColor+Extension.swift */; };
 		B2B6EA78272572C600354833 /* CartScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA72272572C600354833 /* CartScenePresenter.swift */; };
 		B2B6EA7B272572C600354833 /* CartSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA75272572C600354833 /* CartSceneViewController.swift */; };
 		B2B6EA7C272572C600354833 /* CartSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6EA76272572C600354833 /* CartSceneInteractor.swift */; };
@@ -87,6 +89,8 @@
 		B26CEA0C272417A100B1F89F /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		B26CEA0F272417BD00B1F89F /* TableViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B26CEA10272417BD00B1F89F /* TableViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		B29F116927280A340090492F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B29F116B27280A8E0090492F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B2B6EA72272572C600354833 /* CartScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScenePresenter.swift; sourceTree = "<group>"; };
 		B2B6EA75272572C600354833 /* CartSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSceneViewController.swift; sourceTree = "<group>"; };
 		B2B6EA76272572C600354833 /* CartSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSceneInteractor.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				B26CE9FD27240A9500B1F89F /* Reusable Views */,
 				B26CE9F52724093800B1F89F /* Mock Response */,
 				B26CE9A12724048600B1F89F /* Assets.xcassets */,
+				B29F116927280A340090492F /* Colors.xcassets */,
 				B26CE9A32724048600B1F89F /* LaunchScreen.storyboard */,
 				B26CE9A62724048600B1F89F /* Info.plist */,
 			);
@@ -354,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				B2FCCD8C272477EC005FDF7F /* UIControl+Extension.swift */,
+				B29F116B27280A8E0090492F /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 			files = (
 				B26CE9F92724095800B1F89F /* menu.json in Resources */,
 				B26CEA12272417BD00B1F89F /* TableViewCollectionViewCell.xib in Resources */,
+				B29F116A27280A340090492F /* Colors.xcassets in Resources */,
 				B2B6EA842725758E00354833 /* CartItemTableViewCell.xib in Resources */,
 				B2B6EA7F272572E300354833 /* CartSceneView.storyboard in Resources */,
 				B26CEA0E272417A100B1F89F /* MenuItemTableViewCell.xib in Resources */,
@@ -499,6 +506,7 @@
 				B2B6EA882725791C00354833 /* TotalPriceTableViewCell.swift in Sources */,
 				B26CE9E2272408CA00B1F89F /* HomeSceneWorker.swift in Sources */,
 				B26CE9EE2724090A00B1F89F /* MenuSceneWorker.swift in Sources */,
+				B29F116C27280A8E0090492F /* UIColor+Extension.swift in Sources */,
 				B26CE9E5272408CA00B1F89F /* HomeSceneInteractor.swift in Sources */,
 				B2B6EA7B272572C600354833 /* CartSceneViewController.swift in Sources */,
 				B26CE9B72724059900B1F89F /* WebServiceHelper.swift in Sources */,
