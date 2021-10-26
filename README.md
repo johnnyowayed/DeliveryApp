@@ -30,7 +30,7 @@ pod 'SDWebImage'
 ## Summary
 
 The main page of this app contains a list of offer images that can be manually scrolled and automatically every 3 seconds in a collection view.
-The Menu which is a bottom sheet showing on top of the main view contains a segmented control to choose the menu category. This page is a collection view having a table view inside each cell. This will allow it to have several gestures like scrolling up/down or left/right. The item in each category is a reusable view created with an image view, label and a button to select the item. Upon scrolling up a floating cart button is shown to view our selected items in the cart list controller with the total price and the ability to remove any item in the list.
+The Menu which is a bottom sheet showing on top of the main view contains a segmented control to choose the menu category. This menu model consists of a 3 different categories and a list of items for each category. This page is a collection view having a table view inside each cell. This will allow it to have several gestures like scrolling up/down or left/right. The item in each category is a reusable view created with an image view, label and a button to select the item. Upon scrolling up a floating cart button is shown to view our selected items in the cart list controller with the total price and the ability to remove any item in the list.
 
 ## Application Architecture
 
