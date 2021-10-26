@@ -48,3 +48,4 @@ The Delivery App follows the Clean Swift architecture using Xcode Templates I cr
 - [x] Reusable Views
 - [x] Extensions
 - [x] Mock JSON Response
+- [x] Dark Mode Support
