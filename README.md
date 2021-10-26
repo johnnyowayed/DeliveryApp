@@ -1,5 +1,5 @@
 <p align="center" >
-  ![Delivery App](https://user-images.githubusercontent.com/18611539/138923029-1967467b-b663-4756-aa90-93ce4c2f8ba8.png)
+  <img src="https://user-images.githubusercontent.com/18611539/138923029-1967467b-b663-4756-aa90-93ce4c2f8ba8.png" title="Delivery App logo" float=left>
 </p>
 
 # Delivery App
