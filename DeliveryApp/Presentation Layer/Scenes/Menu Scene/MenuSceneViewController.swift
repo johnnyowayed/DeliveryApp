@@ -74,7 +74,7 @@ final class MenuSceneViewController: UIViewController, UIGestureRecognizerDelega
         let uiScreenHeight = UIScreen.main.bounds.height
         let flowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
-        flowLayout.itemSize = CGSize(width: width, height: partialView + uiScreenHeight * 0.24)
+        flowLayout.itemSize = CGSize(width: width, height: partialView + uiScreenHeight * 0.19 )
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .horizontal

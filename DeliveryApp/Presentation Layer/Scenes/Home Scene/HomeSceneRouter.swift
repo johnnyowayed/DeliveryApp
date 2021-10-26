@@ -21,7 +21,12 @@ extension HomeSceneRouterImplementation: HomeSceneRouter {
     func setupBottomSheet() {
         let storyboard = UIStoryboard(name: "MenuSceneView", bundle: nil)
         let menuSceneVC = storyboard.instantiateViewController(withIdentifier: "MenuSceneViewController") as! MenuSceneViewController
-        menuSceneVC.partialView = UIScreen.main.bounds.height * 0.55 // 55% of the Screen Size
+        
+        if UIScreen.main.bounds.height != 736 { // fixing iphone 8 plus
+            menuSceneVC.partialView = UIScreen.main.bounds.height * 0.55// 55% of the Screen Size
+        }else {
+            menuSceneVC.partialView = UIScreen.main.bounds.height * 0.54
+        }
 
         source?.addChild(menuSceneVC)
         source?.view.addSubview(menuSceneVC.view)
