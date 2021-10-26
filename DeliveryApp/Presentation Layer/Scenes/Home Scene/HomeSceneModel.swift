@@ -19,8 +19,7 @@ enum HomeModel
         let imageOffers: [ImageOffer]
     }
     
-    struct ViewModel
-    {
+    struct ViewModel {
         var imageUrls: [URL]
     }
 }

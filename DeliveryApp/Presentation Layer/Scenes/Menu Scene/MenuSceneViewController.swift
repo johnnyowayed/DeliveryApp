@@ -126,6 +126,8 @@ extension MenuSceneViewController:UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+//MARK: - Scroll View Delegates
+
 extension MenuSceneViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

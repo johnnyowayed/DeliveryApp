@@ -8,7 +8,6 @@
 import UIKit
 
 protocol CartScenePresenter {
-    func interactor(didRemoveItemFromCart newItemList: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem])
     func interactor(didCalculateTotalPrice newPrice: Int)
 }
 
@@ -20,9 +19,5 @@ extension CartScenePresenterImplementation: CartScenePresenter {
     
     func interactor(didCalculateTotalPrice newPrice: Int) {
         self.viewController?.presenter(newPrice: "\(newPrice)" + " " + "usd")
-    }
-    
-    func interactor(didRemoveItemFromCart newItemList: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem]) {
-        self.viewController?.presenter(newItemsInCart: newItemList)
     }
 }

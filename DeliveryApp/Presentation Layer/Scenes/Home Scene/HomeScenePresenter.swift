@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeScenePresenter {
-    func interactor(didRetreiveOffers offers: HomeModel.Response)
+    func interactor(didRetreiveOffers response: HomeModel.Response)
 }
 
 final class HomeScenePresenterImplementation {
@@ -16,13 +16,14 @@ final class HomeScenePresenterImplementation {
 }
 
 extension HomeScenePresenterImplementation: HomeScenePresenter {
-    func interactor(didRetreiveOffers offersModel: HomeModel.Response) {
+    func interactor(didRetreiveOffers response: HomeModel.Response) {
+        
         var imageUrls = [URL]()
         
-        let _ = offersModel.imageOffers.map { imageOffer in
+        let _ = response.imageOffers.map { imageOffer in
             imageUrls.append(URL.init(string: imageOffer.imageOffer)!)
         }
         let viewModel = HomeModel.ViewModel(imageUrls: imageUrls)
-        self.viewController?.didReceiveImageOffers(ViewModel: viewModel)
+        self.viewController?.didReceiveImageOffers(viewModel: viewModel)
     }
 }

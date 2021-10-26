@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol HomeScenePresenterOutput: AnyObject {
-    func didReceiveImageOffers(ViewModel: HomeModel.ViewModel)
+    func didReceiveImageOffers(viewModel: HomeModel.ViewModel)
 }
 
 final class HomeSceneViewController: UIViewController {
@@ -72,16 +72,10 @@ final class HomeSceneViewController: UIViewController {
         self.collectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
     }
     
-    // MARK: Auto Scrolling with 3s Timer
+    // MARK: Auto Scrolling with a Timer
     
     func setuptimer() {
         let _ = Timer.scheduledTimer(timeInterval: TimeInterval(self.timeInterval), target: self , selector:#selector(startScrolling), userInfo: nil, repeats: true)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        print()
     }
     
     @objc func startScrolling() {
@@ -97,9 +91,11 @@ final class HomeSceneViewController: UIViewController {
     }
 }
 
+//MARK: Presenter Protocols
+
 extension HomeSceneViewController: HomeScenePresenterOutput {
-    func didReceiveImageOffers(ViewModel: HomeModel.ViewModel) {
-        self.imageURLs = ViewModel.imageUrls
+    func didReceiveImageOffers(viewModel: HomeModel.ViewModel) {
+        self.imageURLs = viewModel.imageUrls
         self.collectionView.reloadData()
     }
 }
@@ -116,9 +112,16 @@ extension HomeSceneViewController: UICollectionViewDelegate, UICollectionViewDat
         
         return cell
     }
+}
+
+//MARK: - Scroll View Delegates
+
+extension HomeSceneViewController: UIScrollViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.pageControl.currentPage = indexPath.row
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let indexPath = collectionView.indexPathsForVisibleItems.first {
+            self.pageControl.currentPage = indexPath.row
+        }
     }
 }
 

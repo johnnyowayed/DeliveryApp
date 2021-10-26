@@ -8,7 +8,6 @@
 import UIKit
 
 protocol CartScenePresenterOutput: AnyObject {
-    func presenter(newItemsInCart items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem])
     func presenter(newPrice: String)
 }
 
@@ -30,7 +29,6 @@ final class CartSceneViewController: UIViewController {
     }
     
     func setupUI() {
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
@@ -49,17 +47,12 @@ extension CartSceneViewController: CartScenePresenterOutput {
         self.totalPrice = newPrice
         self.tableView.reloadData()
     }
-    
-    func presenter(newItemsInCart items: [MenuModel.ViewModel.DisplayedMenu.DisplayedItem]) {
-        self.itemsInCart = items
-        self.interactor?.calculateTotalPrice(items: self.itemsInCart)
-        self.tableView.reloadData()
-    }
 }
 
 //MARK: - TableView Delegate & Data Source
 
 extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if !self.itemsInCart.isEmpty {
             if (self.itemsInCart.count) >= indexPath.row + 1 {
@@ -85,7 +78,9 @@ extension CartSceneViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func cancelItem(sender: UIButton) {
-        self.interactor?.removeItemFromList(items: self.itemsInCart, index: sender.tag)
+        self.itemsInCart.remove(at: sender.tag)
+        self.interactor?.calculateTotalPrice(items: self.itemsInCart)
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

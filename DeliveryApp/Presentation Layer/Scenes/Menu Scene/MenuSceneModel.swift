@@ -18,8 +18,8 @@ enum MenuModel
         let menus: [Menu]
     }
     
-    struct ViewModel
-    {
+    struct ViewModel{
+        
         struct DisplayedMenu {
             let category: String
             let items: [DisplayedItem]

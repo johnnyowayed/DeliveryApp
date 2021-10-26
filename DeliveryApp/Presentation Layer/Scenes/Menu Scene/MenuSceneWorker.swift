@@ -22,6 +22,8 @@ extension MenuSceneWorkerImplementation: MenuSceneWorker {
     }
 }
 
+//MARK: Mock API Response
+
 final class MockMenuSceneWorkerImplementation: MenuSceneWorker {
     func fetchMenu(completion: @escaping MenuResponse) -> URLSessionDataTask? {
         if let path = Bundle.main.path(forResource: "menu", ofType: "json") {
